@@ -25,5 +25,6 @@ _ft_strcpy:
 		jne			.loop
 
 .return:
+		mov			byte[rdi + rax], 0
 		mov			rax, rdi
 		ret
