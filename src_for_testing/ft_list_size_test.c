@@ -6,7 +6,7 @@
 /*   By: aberry <aberry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 19:22:32 by aberry            #+#    #+#             */
-/*   Updated: 2021/01/14 19:22:44 by aberry           ###   ########.fr       */
+/*   Updated: 2021/01/14 21:36:21 by aberry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		ft_list_size_case(int num)
 void			ft_list_size_test(void)
 {
 	printf("________________________________________________\n");
-	printf("              ft_list_push_front test           \n");
+	printf("               ft_list_size test                \n");
 	printf("________________________________________________\n");
 	ft_list_size_case(5);
 	ft_list_size_case(0);
