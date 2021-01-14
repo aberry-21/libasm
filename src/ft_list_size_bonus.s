@@ -1,7 +1,7 @@
 ;* ************************************************************************** */
 ;*                                                                            */
 ;*                                                        :::      ::::::::   */
-;*   ft_strcpy.s                                        :+:      :+:    :+:   */
+;*   ft_list_size.s                                     :+:      :+:    :+:   */
 ;*                                                    +:+ +:+         +:+     */
 ;*   By: aberry <aberry@student.42.fr>              +#+  +:+       +#+        */
 ;*                                                +#+#+#+#+#+   +#+           */
@@ -10,19 +10,19 @@
 ;*                                                                            */
 ;* ************************************************************************** */
 
-global				_ft_strcpy
+global				_ft_list_size
 
 section .text
 
-_ft_strcpy:
-		xor			rax, rax
+_ft_list_size:						;rdi == begin_list
+		xor			rax, rax		;i = 0
+		mov			rsi, rdi		;t_list	*list = begin_list
 
-.loop:	mov			dl, byte[rsi + rax]
-		mov			byte[rdi + rax], dl
-		inc			rax
-		test		dl, dl
-		jne			.loop
+.loop:	test		rsi, rsi		; if list == NULL
+		je			.return			; then return
+		inc			rax				; i++
+		mov			rsi, [rsi + 8]	; list = list->next
+		jmp			.loop			; while(list)
 
 .return:
-		mov			rax, rdi
 		ret

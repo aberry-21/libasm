@@ -1,7 +1,7 @@
 ;* ************************************************************************** */
 ;*                                                                            */
 ;*                                                        :::      ::::::::   */
-;*   ft_strcpy.s                                        :+:      :+:    :+:   */
+;*   ft_create_elem.s                                   :+:      :+:    :+:   */
 ;*                                                    +:+ +:+         +:+     */
 ;*   By: aberry <aberry@student.42.fr>              +#+  +:+       +#+        */
 ;*                                                +#+#+#+#+#+   +#+           */
@@ -10,19 +10,15 @@
 ;*                                                                            */
 ;* ************************************************************************** */
 
-global				_ft_strcpy
-
+global				_ft_create_elem
+extern				_malloc
 section .text
 
-_ft_strcpy:
-		xor			rax, rax
-
-.loop:	mov			dl, byte[rsi + rax]
-		mov			byte[rdi + rax], dl
-		inc			rax
-		test		dl, dl
-		jne			.loop
-
-.return:
-		mov			rax, rdi
+_ft_create_elem:						;rdi == data
+		push		rdi
+		mov			rdi, 16
+		call		_malloc				;list = malloc(16);
+		pop			qword [rax]			;list->data = data;
+		mov			qword [rax + 8], 0	;list->next = NULL
 		ret
+
